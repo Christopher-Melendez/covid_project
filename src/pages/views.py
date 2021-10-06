@@ -7,5 +7,8 @@ def home_view(request, *args, **kwargs):
     #template = loader.get_template('home.html')
     return render(request, 'home.html', {})
 
-def map_view(request, *args, **kewargs):
-    return HttpResponse("<h1>MAPS GO HERE</h1>")
+def maps_view(request, *args, **kewargs):
+    return render(request, 'maps.html', {})
+
+def tables_view(request, *args, **kewargs):
+    return render(request, 'tables.html', {})

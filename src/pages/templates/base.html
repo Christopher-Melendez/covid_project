@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'pages/style.css' %}">
+    <div id="header">
+        <title>Covid and Inequality in New York</title>
+        <h1>Covid and Inequality in New York</h1>
+    
+    </div>
+
+    <div id="nav-bar">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>     
+            <li><a href="{% url 'maps' %}">Maps</a></li>
+            <li><a href="{% url 'tables' %}">Tables</a></li>
+        </ul>
+    </div>
+</head>
+
+<body>
+    
+    {% block body-content %}
+    
+    {% endblock %}
+
+</body>
+
+<footer>
+
+</footer>
+
+</html>
