@@ -27,6 +27,13 @@ ul li {
 
 
 }
+#body_view {
+    height: 50%;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
 h1 {
     color: white;
     

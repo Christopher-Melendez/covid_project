@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
-<head>
     {% load static %}
     <link rel="stylesheet" type ="text/css" href="{% static 'pages/style.css' %}">
+<head>
+    
     <div id="header">
         <title>Covid and Inequality in New York</title>
         <h1>Covid and Inequality in New York</h1>
@@ -13,20 +14,19 @@
             <li><a href="{% url 'home' %}">Home</a></li>     
             <li><a href="{% url 'maps' %}">Maps</a></li>
             <li><a href="{% url 'tables' %}">Tables</a></li>
+            <li><a href="{% url 'tables' %}">Covid Stories</a></li>
         </ul>
     </div>
 </head>
 
-<p>
-    Ryan's edit  2
-</p>
-<p>
-    Chris's Edit  3
-</p>
 <body> 
+    <div id="body_view">
+
     {% block body-content %}
-    
+        FILLER TEXT THIS IS GONNA GET REPLACED
     {% endblock %}
+
+    </div>
 </body>
 <footer>
 </footer>

@@ -6,7 +6,9 @@ map = folium.Map(location=[43.2994, -74.2179], zoom_start=12)
 tooltip = 'Click for More Info'
 
 #Create markers
-folium.Marker([43.302600, -74.258500], 
+lat_1 = 43.302600
+long_1 = -74.258500
+folium.Marker([lat_1, long_1], 
                popup='<strong>Location One</strong>',
                tooltip=tooltip).add_to(map),
 folium.Marker([43.272600, -74.458500], 
@@ -33,7 +35,10 @@ folium.CircleMarker(
 ).add_to(map),
 
 
-#Figure out how to generate map with different dimensions (~%50)
-
 #Generate map
-map.save('map.html')
+file_path = 'heat_map/temp/map.html'
+map.save(file_path)
+
+#Louis Stackoverflow :D https://stackoverflow.com/questions/8369219/how-to-read-a-text-file-into-a-string-variable-and-strip-newlines
+with open(file_path, 'r') as file:
+   data = file.read().replace('\n', '')

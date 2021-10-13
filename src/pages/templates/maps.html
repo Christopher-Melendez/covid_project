@@ -1,5 +1,18 @@
 {% extends 'base.html'%}
 {% block body-content %}
-<h2>MAPS TITLE</h2>
-<p1>This is a template..</p1>  
+    {% autoescape off %}
+        {{ map_html }}
+    {% endautoescape %}
+
+    <div id="selections">
+        <form action ="" <!-- This will be the post request --> 
+            <input type="checkbox" id="map_choice_1" name="inputvar1" value="value1">
+                <label for="map_choice_1">Covid Cases</label><br>
+            <input type="checkbox" id="map_choice_2" name="inputvar2" value="value2">
+                <label for="map_choice_2">Median Income</label><br>
+            <input type="checkbox" id="map_choice_3" name="inputvar3" value="value3">
+                <label for="map_choice_1">Insurance Coverage</label><br>
+            <input type ="submit" value="Submit">
+        </form>
+    </div>
 {% endblock %}
