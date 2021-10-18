@@ -4,15 +4,21 @@
         {{ map_html }}
     {% endautoescape %}
 
-    <div id="selections">
-        <form action ="" <!-- This will be the post request --> 
-            <input type="checkbox" id="map_choice_1" name="inputvar1" value="value1">
-                <label for="map_choice_1">Covid Cases</label><br>
-            <input type="checkbox" id="map_choice_2" name="inputvar2" value="value2">
-                <label for="map_choice_2">Median Income</label><br>
-            <input type="checkbox" id="map_choice_3" name="inputvar3" value="value3">
-                <label for="map_choice_1">Insurance Coverage</label><br>
-            <input type ="submit" value="Submit">
-        </form>
-    </div>
+
+    
+    <form id="map-form" method='GET'>
+        
+        <!-- input needs id ..-->
+        <label for="map-choice">Choose A Filter:</label>
+        <select name="map-choice" id="map-choice" form="map-form">
+            <option value="COVID-19 Cases">COVID-19 Cases</option>
+            <option value="COVID-19 Deaths">COVID-19 Deaths</option>
+            <option value="Median Income">Median Income</option>
+            <option value="Insurance Coverage">Insurance Coverage</option>
+        </select>
+        <input type='submit' value='Change Map Type' />
+    </form>
+    <!-- Need a get here to retrieve the post from submit.. -->
+    <br><br><h3>Map Choice: </h3> {{ map_choice }}
+
 {% endblock %}
