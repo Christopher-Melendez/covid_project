@@ -11,6 +11,7 @@
         <!-- input needs id ..-->
         <label for="map-choice">Choose A Filter:</label>
         <select name="map-choice" id="map-choice" form="map-form">
+            <option value="None">None</option>
             <option value="COVID-19 Cases">COVID-19 Cases</option>
             <option value="COVID-19 Deaths">COVID-19 Deaths</option>
             <option value="Median Income">Median Income</option>
@@ -20,5 +21,9 @@
     </form>
     <!-- Need a get here to retrieve the post from submit.. -->
     <br><br><h3>Map Choice: </h3> {{ map_choice }}
+
+    <script>
+        document.getElementById('map-choice').value = "{{ map_choice }}"
+    </script>
 
 {% endblock %}

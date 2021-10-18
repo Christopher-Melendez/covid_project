@@ -25,8 +25,8 @@ def maps_view(request, *args, **kewargs):
     
     web_context = {
         'form': form,
-        'map_html': maps(map_choice_in)
-        #'map_choice': map_obj.map_choice
+        'map_html': maps(map_choice_in),
+        'map_choice': map_choice_in
     }
     return render(request, 'maps.html', web_context)
 

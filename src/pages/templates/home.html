@@ -1,8 +1,48 @@
 {% extends 'base.html'%}
 {% block body-content %}
-<h2>HOME TITLE</h2>
-<p1>This is the homepage loaded from a template..</p1>  
 
+<h2>Covid In New York</h2>
+ 
+<img id="home-image" src="../static/images/covid_walking.jpg">
+
+<br>
+<h3>Project Aim:</h3>
+<p id="project-aim"> 
+    The COVID-19 Pandemic while grueling for all, did not affect all communities equally. Certain regions of New York experienced the effects of 
+    COVID-19 worse than others. This project aims to first provide a visualization for both Covid Cases and Deaths, as well as other factors by 
+    geographical region. You can then use these visualizations to make your own conclusions about the correlations between certain factors and 
+    COVID-19 disparity in New York.
+</p>
+
+<br><br><br>
+<h3>Project Flow:</h3>
+<p id="project-flow">
+    This project is displayed on a web frontend (HTML/JS/CSS) hosted on a local server and controlled using the Django Framework running on
+    Python. All of our data is stored in a local PostgreSQL database, which is similarly controlled using the Django Framework.
+</p>
+
+<br><br><br>
+<h3>The Team:</h3>
+<p id="team">
+    Group 3: Christopher, Tammy, Ryan, Sudipta, Shoh 
+</p>
+
+<br><br><br>
+
+<style>
+    h2, h3 {
+        color: rgb(241, 247, 255);
+    }
+    p {
+        color: rgb(204, 219, 238);
+    }
+    #home-image {
+        width: 80%;
+        height: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 {% endblock %}
-
-{ map.text}
+    
