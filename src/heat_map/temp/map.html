@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_ab5c78ed71724c3f8e883a18de4c5b8d {
+                #map_426900a3b32f492f8bd7619d96e3d8df {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,13 +35,13 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_ab5c78ed71724c3f8e883a18de4c5b8d" ></div>
+            <div class="folium-map" id="map_426900a3b32f492f8bd7619d96e3d8df" ></div>
         
 </body>
 <script>    
     
-            var map_ab5c78ed71724c3f8e883a18de4c5b8d = L.map(
-                "map_ab5c78ed71724c3f8e883a18de4c5b8d",
+            var map_426900a3b32f492f8bd7619d96e3d8df = L.map(
+                "map_426900a3b32f492f8bd7619d96e3d8df",
                 {
                     center: [43.2994, -74.2179],
                     crs: L.CRS.EPSG3857,
@@ -55,26 +55,59 @@
 
         
     
-            var tile_layer_6257a80a066441feb11a73aa0b648835 = L.tileLayer(
+            var tile_layer_ee1fed8937e64e63903f18f868747e3b = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_ab5c78ed71724c3f8e883a18de4c5b8d);
+            ).addTo(map_426900a3b32f492f8bd7619d96e3d8df);
         
     
-            var circle_marker_dc96d47684484c33a5bd55d8fabe87db = L.circleMarker(
+            var marker_8720041fef804bd18ec01b8d7ea6dfc4 = L.marker(
+                [43.3626, -74.2085],
+                {}
+            ).addTo(map_426900a3b32f492f8bd7619d96e3d8df);
+        
+    
+            var icon_97966323878142268eb78133f5ce14e7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "leaf", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8720041fef804bd18ec01b8d7ea6dfc4.setIcon(icon_97966323878142268eb78133f5ce14e7);
+        
+    
+        var popup_413617467f54402582659a72cce28167 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0c35ec63ae5a4a94b872f861e0c1ef93 = $(`<div id="html_0c35ec63ae5a4a94b872f861e0c1ef93" style="width: 100.0%; height: 100.0%;"><strong>Location Four</strong></div>`)[0];
+            popup_413617467f54402582659a72cce28167.setContent(html_0c35ec63ae5a4a94b872f861e0c1ef93);
+        
+
+        marker_8720041fef804bd18ec01b8d7ea6dfc4.bindPopup(popup_413617467f54402582659a72cce28167)
+        ;
+
+        
+    
+    
+            marker_8720041fef804bd18ec01b8d7ea6dfc4.bindTooltip(
+                `<div>
+                     Click for More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_211089e53d3644f19be80dd8a6f8e150 = L.circleMarker(
                 [43.1009, -75.2327],
                 {"bubblingMouseEvents": true, "color": "#428BCA", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#428BCA", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
-            ).addTo(map_ab5c78ed71724c3f8e883a18de4c5b8d);
+            ).addTo(map_426900a3b32f492f8bd7619d96e3d8df);
         
     
-        var popup_c7576033bccf4af5a895c4e600c6f237 = L.popup({"maxWidth": "100%"});
+        var popup_8e4c10b1d15443cd9136c9e6c2f8ffe2 = L.popup({"maxWidth": "100%"});
 
         
-            var html_20b652ed020940e797c408c14f4cb704 = $(`<div id="html_20b652ed020940e797c408c14f4cb704" style="width: 100.0%; height: 100.0%;">Utica</div>`)[0];
-            popup_c7576033bccf4af5a895c4e600c6f237.setContent(html_20b652ed020940e797c408c14f4cb704);
+            var html_13f67c6e6733474f87e0682cd2758138 = $(`<div id="html_13f67c6e6733474f87e0682cd2758138" style="width: 100.0%; height: 100.0%;">Utica</div>`)[0];
+            popup_8e4c10b1d15443cd9136c9e6c2f8ffe2.setContent(html_13f67c6e6733474f87e0682cd2758138);
         
 
-        circle_marker_dc96d47684484c33a5bd55d8fabe87db.bindPopup(popup_c7576033bccf4af5a895c4e600c6f237)
+        circle_marker_211089e53d3644f19be80dd8a6f8e150.bindPopup(popup_8e4c10b1d15443cd9136c9e6c2f8ffe2)
         ;
 
         
