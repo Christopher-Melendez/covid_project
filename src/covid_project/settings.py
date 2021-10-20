@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #Our Apps
     'pages',
     'heat_map',
+    'blog',
 
 ]
 

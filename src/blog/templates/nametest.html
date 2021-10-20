@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block body-content %}
+
+<!-- btw this is how you comment in html
+    in order to access that variable from the backend, do double curly--->
+
+
+<h1>
+    Welcome {{name}} <br>
+    Today is {{date}}
+</h1>
+
+
+<h1> We would love to hear your story, please share it below!
+
+</h1>
+
+<!-- creates a text box for people to enter stuff in it
+can change the size of box using the rows and cols-->
+<form>
+    <textarea name = "text" rows = "25" cols = "100"></textarea>
+
+    <input type = "submit"/>
+</form>
+
+{% endblock %}

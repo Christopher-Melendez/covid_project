@@ -13,7 +13,7 @@ def home_view(request, *args, **kwargs):
     return render(request, 'home.html', {})
 
 
-def maps_view(request, *args, **kewargs):
+def maps_view(request, *args, **kwargs):
     form = MapForm(request.POST or None)
     if form.is_valid():
        form.save()
@@ -30,5 +30,6 @@ def maps_view(request, *args, **kewargs):
     }
     return render(request, 'maps.html', web_context)
 
-def tables_view(request, *args, **kewargs):
+def tables_view(request, *args, **kwargs):
     return render(request, 'tables.html', {})
+
