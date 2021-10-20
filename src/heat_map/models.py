@@ -19,4 +19,8 @@ class Map(models.Model):
         default = COVID_CASES,
     )
 
+
+    #Run a select query to get database views in the init file to join the 3 tables (Data/County/Latlong) & Then Populate Map using those..
+    #
+
     
