@@ -18,6 +18,7 @@ class Map(models.Model):
         choices = MAP_CHOICES,
         default = COVID_CASES,
     )
+    perc_20-25 =  models.FloatField(default=0.0)
 
 
     #Run a select query to get database views in the init file to join the 3 tables (Data/County/Latlong) & Then Populate Map using those..
