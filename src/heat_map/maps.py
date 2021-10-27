@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import os
 import tables
-from tables.models import covid_cases
+#from tables.models import covid_cases
 #import geopandas as gpd
 
 
