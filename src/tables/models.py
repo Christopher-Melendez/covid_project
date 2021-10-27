@@ -41,8 +41,8 @@ class ethnicity_id(models.Model):
 
 
 class covid_cases(models.Model):
-    test_date = models.CharField(default=0)
-    county = models.CharField(default=0)
+    test_date = models.CharField(default=0, max_length=100)
+    county = models.CharField(default=0, max_length=100)
     new_positives = models.IntegerField(default=0)
     Cumulative_num_posi = models.IntegerField(default=0)
     total_tests_day = models.IntegerField(default=0)
