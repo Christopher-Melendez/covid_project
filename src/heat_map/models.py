@@ -24,3 +24,22 @@ class Map(models.Model):
     #
 
     
+class ethnicity_id(models.Model):
+    ethnicity_id = models.FloatField(default=0)
+    perc_white = models.FloatField(default=0)
+    perc_african_american = models.FloatField(default=0)
+    perc_native_american = models.FloatField(default=0)
+    perc_asian = models.FloatField(default=0)
+    perc_pacific_islander= models.FloatField(default=0)
+    perc_other = models.FloatField(default=0)
+    perc_two_or_more = models.FloatField(default=0)
+
+
+class covid_cases(models.Model):
+    test_date = models.CharField(default=0)
+    county = models.CharField(default=0)
+    new_positives = models.FloatField(default=0)
+    Cumulative_num_posi = models.FloatField(default=0)
+    total_tests_day = models.FloatField(default=0)
+    cumul_tests = models.FloatField(default=0)
+    C_Pos_C_Test = models.FloatField(default=0)
