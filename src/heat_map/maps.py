@@ -29,9 +29,7 @@ def maps(map_choice):
     m = folium.Map(location=[43.2994, -74.2179], zoom_start=7)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 
-    print("MAKING MAP")
     if map_choice == 'COVID-19 Cases':
-        print("ALMOST THERE")
         m.choropleth(
             geo_data=counties,
             name='choropleth',
@@ -44,32 +42,31 @@ def maps(map_choice):
             legend_name='Percent Positive',
             
         )
-        print("CHLORO")
 
         folium.LayerControl().add_to(m)
 
-    # elif map_choice == 'COVID-19 Deaths':
-    #     folium.Marker(
-    #         [43.272600, -74.458500],
-    #         popup='<strong>Location Two</strong>',
-    #         tooltip=tooltip,
-    #         icon=folium.Icon(icon='cloud')
-    #     ).add_to(m)
-    # elif map_choice == 'Median Income':
-    #     folium.Marker(
-    #         [43.332600, -74.228500], 
-    #         popup='<strong>Location Three</strong>',
-    #         tooltip=tooltip,
-    #         icon=folium.Icon(color='purple')
-    #     ).add_to(m)
-    # elif map_choice == 'Insurance Coverage':
-    #     folium.Marker([43.362600, -74.208500], 
-    #         popup='<strong>Location Four</strong>',
-    #         tooltip=tooltip,
-    #         icon=folium.Icon(color='green', icon='leaf')
-    #     ).add_to(m)
+    elif map_choice == 'COVID-19 Deaths':
+        folium.Marker(
+            [43.272600, -74.458500],
+            popup='<strong>Location Two</strong>',
+            tooltip=tooltip,
+            icon=folium.Icon(icon='cloud')
+        ).add_to(m)
+    elif map_choice == 'Median Income':
+        folium.Marker(
+            [43.332600, -74.228500], 
+            popup='<strong>Location Three</strong>',
+            tooltip=tooltip,
+            icon=folium.Icon(color='purple')
+        ).add_to(m)
+    elif map_choice == 'Insurance Coverage':
+        folium.Marker([43.362600, -74.208500], 
+            popup='<strong>Location Four</strong>',
+            tooltip=tooltip,
+            icon=folium.Icon(color='green', icon='leaf')
+        ).add_to(m)
     else:
-        print("WELP ~.~")
+        pass
     
     # folium.Marker([lat_1, long_1], 
     #             popup='<strong>Location One</strong>',
@@ -96,7 +93,6 @@ def maps(map_choice):
     #Generate map
     file_path = 'heat_map/temp/map.html'
     m.save(file_path)
-    print("SAVE")
 
     with open(file_path, 'r') as file:
         map_html_text = file.read().replace('\n', '')
