@@ -19,7 +19,7 @@ class Map(models.Model):
         default = COVID_CASES,
     )
 class income_id(models.Model):
-    c_income_id = models.FloadField(default=0.0)
+    c_income_id = models.FloatField(default=0.0)
     perc_0_10 = models.FloatField(default=0.0)
     perc_10_15 = models.FloatField(default=0.0)
     perc_15_20 = models.FloatField(default=0.0)
