@@ -18,7 +18,10 @@ def maps_view(request, *args, **kwargs):
     if form.is_valid():
        form.save()
     
-    map_choice_in = request.GET.get('map-choice')
+    print(request) 
+    print(request.POST)      
+    
+    map_choice_in = request.POST.get('map-choice')
     print(map_choice_in)
    
     #map_obj = Map.objects.get(id=1)

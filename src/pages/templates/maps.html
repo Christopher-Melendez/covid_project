@@ -6,8 +6,8 @@
 
 
     
-    <form id="map-form" method='GET'>
-        
+    <form id="map-form" method='POST'>
+        {% csrf_token %}   
         <!-- input needs id ..-->
         <label for="map-choice">Choose A Filter:</label>
         <select name="map-choice" id="map-choice" form="map-form">
