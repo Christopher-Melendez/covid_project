@@ -2,6 +2,8 @@ import folium
 import pandas as pd
 import json
 import os
+import tables
+from tables.models import covid_cases
 #import geopandas as gpd
 
 
@@ -25,6 +27,8 @@ def maps(map_choice):
     counties = 'heat_map/data/ny_counties.json'
     covid_data = 'heat_map/data/COVID_CASES.csv'
     county_data = pd.read_csv(covid_data)
+
+    #data = covid_cases.objects.get(id=1)
 
     m = folium.Map(location=[43.2994, -74.2179], zoom_start=7)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
