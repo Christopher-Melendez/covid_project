@@ -1,5 +1,8 @@
 import folium
+import pandas as pd
 import json
+import os
+import geopandas as gpd
 
 
 #TEST COMMENT NEW THING DONE
@@ -8,7 +11,6 @@ import json
 def maps(map_choice):
 
     #Create map object, N&E positive, S&W negative
-    map = folium.Map(location=[43.2994, -74.2179], zoom_start=12)
 
     #Global tooltip
     tooltip = 'Click for More Info'
@@ -18,38 +20,49 @@ def maps(map_choice):
 
     #Result Set to store SQL query Wtih all rows.. run for loop to iterate through results and populate the overlays..
 
+    counties = os.path.join('data', 'ny_counties.json')
+    covid_data = os.path.join('data', 'COVID_CASES.csv')
+    county_data = pd.read_csv(covid_data)
 
+    m = folium.Map(location=[43.2994, -74.2179], zoom_start=7)
+    folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 
-    lat_1 = 43.302600
-    long_1 = -74.258500
 
     if map_choice == 'COVID-19 Cases':
-        print("YEEEEES")
-        folium.Marker(
-            [lat_1, long_1],
-            pop_up = '<strong>Location One</strong>',
-            tooltip=tooltip
-        ).add_to(map)
+        m.choropleth(
+            geo_data=counties,
+            name='choropleth',
+            data=county_data,
+            columns=['County', 'C_POS/C_TEST'],
+            key_on='feature.properties.name',
+            fill_color='OrRd',
+            fill_opacity=0.7,
+            line_opacity=0.2,
+            legend_name='Percent Positive'
+        )
+
+        folium.LayerControl().add_to(m)
+
     elif map_choice == 'COVID-19 Deaths':
         folium.Marker(
             [43.272600, -74.458500],
             popup='<strong>Location Two</strong>',
             tooltip=tooltip,
             icon=folium.Icon(icon='cloud')
-        ).add_to(map)
+        ).add_to(m)
     elif map_choice == 'Median Income':
         folium.Marker(
             [43.332600, -74.228500], 
             popup='<strong>Location Three</strong>',
             tooltip=tooltip,
             icon=folium.Icon(color='purple')
-        ).add_to(map)
+        ).add_to(m)
     elif map_choice == 'Insurance Coverage':
         folium.Marker([43.362600, -74.208500], 
             popup='<strong>Location Four</strong>',
             tooltip=tooltip,
             icon=folium.Icon(color='green', icon='leaf')
-        ).add_to(map)
+        ).add_to(m)
     else:
         print("WELP ~.~")
     
@@ -69,20 +82,15 @@ def maps(map_choice):
     #             tooltip=tooltip,
     #             icon=folium.Icon(color='green', icon='leaf')).add_to(map),
 
-    #Circle marker
-    folium.CircleMarker(
-    location=[43.1009, -75.2327],
-    radius=50,
-    popup='Utica',
-    color='#428BCA',
-    fill=True,
-    fill_color='#428BCA'
-    ).add_to(map),
+
+    
+ 
+
 
 
     #Generate map
     file_path = 'heat_map/temp/map.html'
-    map.save(file_path)
+    m.save(file_path)
 
     with open(file_path, 'r') as file:
         map_html_text = file.read().replace('\n', '')
