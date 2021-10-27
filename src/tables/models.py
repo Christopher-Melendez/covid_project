@@ -41,6 +41,7 @@ class ethnicity_id(models.Model):
 
 
 class covid_cases(models.Model):
+    id = models.BigIntegerField(primary_key='True')
     test_date = models.CharField(default=0, max_length=100)
     county = models.CharField(default=0, max_length=100)
     new_positives = models.IntegerField(default=0)

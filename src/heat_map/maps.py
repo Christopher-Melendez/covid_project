@@ -3,6 +3,7 @@ import pandas as pd
 import json
 import os
 import tables
+from django.db.models import F
 from tables.models import covid_cases
  
 #import geopandas as gpd
@@ -26,10 +27,24 @@ def maps(map_choice):
     #counties = os.path.join('data', 'ny_counties.json')
     #covid_data = os.path.join('data', 'COVID_CASES.csv')
     counties = 'heat_map/data/ny_counties.json'
-    covid_data = 'heat_map/data/COVID_CASES.csv'
-    county_data = pd.read_csv(covid_data)
+    #covid_data = 'heat_map/data/COVID_CASES.csv'
+    #county_data = pd.read_csv(covid_data)
     
-    data = covid_cases.objects.get(id=1)
+    #data_rows = covid_cases.objects.filter()
+    print('trying')
+    data_rows = covid_cases.objects.all().count()
+    print(data_rows)
+    list_1 = []
+    list_2 = []
+    
+    for i in range(data_rows):
+        row = covid_cases.objects.get(id=(i+1))
+        list_1.append(row.county)
+        list_2.append(row.C_Pos_C_Test)
+    
+    
+    data_dict = {'County': list_1, 'C_POS/C_TEST': list_2}
+    data_frame = pd.DataFrame(data=data_dict)
 
     m = folium.Map(location=[43.2994, -74.2179], zoom_start=7)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
@@ -38,7 +53,7 @@ def maps(map_choice):
         m.choropleth(
             geo_data=counties,
             name='choropleth',
-            data=county_data,
+            data= data_frame,
             columns=['County', 'C_POS/C_TEST'],
             key_on='feature.properties.name',
             fill_color='OrRd',
