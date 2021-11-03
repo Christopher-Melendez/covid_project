@@ -66,12 +66,22 @@ def maps(map_choice):
         folium.LayerControl().add_to(m)
 
     elif map_choice == 'COVID-19 Deaths':
-        folium.Marker(
-            [43.272600, -74.458500],
-            popup='<strong>Location Two</strong>',
-            tooltip=tooltip,
-            icon=folium.Icon(icon='cloud')
-        ).add_to(m)
+        covid_deaths = 'heat_map/data/COVID_DEATHS.csv'
+        county_data = pd.read_csv(covid_deaths)
+
+        m.choropleth(
+            geo_data=counties,
+            name='choropleth',
+            data= county_data,
+            columns=['County', 'Deaths P'],
+            key_on='feature.properties.name',
+            fill_color='OrRd',
+            fill_opacity=0.7,
+            line_opacity=0.2,
+            legend_name='Deaths Per 100,000',
+        )
+        folium.LayerControl().add_to(m)
+
     elif map_choice == 'Median Income':
         folium.Marker(
             [43.332600, -74.228500], 
