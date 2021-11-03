@@ -4,7 +4,7 @@ import json
 import os
 import tables
 from django.db.models import F
-from tables.models import covid_cases
+from tables.models import covid_cases, covid_deaths
  
 #import geopandas as gpd
 
@@ -26,10 +26,7 @@ def model_to_df(model, columns):
 
 def maps(map_choice):
     #Temp Stuff Till Database Finalized...
-    counties = 'heat_map/data/ny_counties.json'
-    covid_deaths = 'heat_map/data/COVID_DEATHS.csv'
-    county_data = pd.read_csv(covid_deaths)
-    
+    counties = 'heat_map/data/ny_counties.json'    
     
     
     #Initializing Folium Map Cenetered in Central New York
@@ -57,8 +54,8 @@ def maps(map_choice):
         m.choropleth(
             geo_data=counties,
             name='choropleth',
-            data= county_data,
-            columns=['County', 'Deaths P'],
+            data= model_to_df(covid_deaths, ['county', 'deaths_per100']),
+            columns=['county', 'deaths_per100'],
             key_on='feature.properties.name',
             fill_color='OrRd',
             fill_opacity=0.7,
