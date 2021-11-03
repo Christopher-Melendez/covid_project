@@ -152,12 +152,7 @@ def maps(map_choice):
 
 
     #Generate map
-    file_path = 'heat_map/temp/map.html'
-    m.save(file_path)
-
-    with open(file_path, 'r') as file:
-        map_html_text = file.read().replace('\n', '')
-
-
+    
+    map_html_text = m.get_root().render()
 
     return map_html_text
