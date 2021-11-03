@@ -50,6 +50,15 @@ class covid_cases(models.Model):
     cumul_tests = models.IntegerField(default=0)
     C_Pos_C_Test = models.FloatField(default=0)
 
+class covid_deaths(models.Model):
+    id = models.BigIntegerField(primary_key='true', default=0)
+    report_date = models.CharField(default=0, max_length=100)
+    county = models.CharField(default=0, max_length=100)
+    total_deaths = models.IntegerField(default=0)
+    population = models.IntegerField(default=0)
+    deaths_percent = models.FloatField(default=0)
+    deaths_per100 = models.FloatField(default=0)
+
 class Age(models.Model):
     age_id = models.IntegerField(primary_key='True', default=0)
     perc0_5 = models.FloatField(default=0)
