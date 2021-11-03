@@ -31,9 +31,21 @@ def maps(map_choice):
     #county_data = pd.read_csv(covid_data)
     
     #data_rows = covid_cases.objects.filter()
-    print('trying')
+    # def model_to_df(model, columns):
+    #     list_1 = []
+    #     list_2 = []
+    #     data_rows = model.objects.all().count()
+
+    #     for i in range(data_rows):
+    #         row = model.objects.get(id=(i+1))
+    #         list_1.append(row.columns[1])
+    #         list_2.append(row.columns[2])
+    #     data_dict = {columns[1]: list_1, columns[2]: list_2}
+    #     data_frame = pd.DataFrame(data=data_dict)
+    #     return data_frame
+
+
     data_rows = covid_cases.objects.all().count()
-    print(data_rows)
     list_1 = []
     list_2 = []
     
@@ -41,7 +53,6 @@ def maps(map_choice):
         row = covid_cases.objects.get(id=(i+1))
         list_1.append(row.county)
         list_2.append(row.C_Pos_C_Test)
-    
     
     data_dict = {'County': list_1, 'C_POS/C_TEST': list_2}
     data_frame = pd.DataFrame(data=data_dict)
@@ -53,7 +64,7 @@ def maps(map_choice):
         m.choropleth(
             geo_data=counties,
             name='choropleth',
-            data= data_frame,
+            data= model_to_df(covid_cases, ['County', 'C_POS/C_TEST']),
             columns=['County', 'C_POS/C_TEST'],
             key_on='feature.properties.name',
             fill_color='OrRd',
