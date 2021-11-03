@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class income_id(models.Model):
-    c_income_id = models.FloatField(default=0.0)
+    c_income_id = models.FloatField(primary_key='true', default=0.0)
     perc_0_10 = models.FloatField(default=0.0)
     perc_10_15 = models.FloatField(default=0.0)
     perc_15_20 = models.FloatField(default=0.0)
@@ -30,7 +30,7 @@ class income_id(models.Model):
 
     
 class ethnicity_id(models.Model):
-    ethnicity_id = models.IntegerField(default=0)
+    ethnicity_id = models.IntegerField(primary_key='True', default=0)
     perc_white = models.FloatField(default=0)
     perc_african_american = models.FloatField(default=0)
     perc_native_american = models.FloatField(default=0)
@@ -41,7 +41,7 @@ class ethnicity_id(models.Model):
 
 
 class covid_cases(models.Model):
-    id = models.BigIntegerField(primary_key='True')
+    id = models.BigIntegerField(primary_key='true', default=0)
     test_date = models.CharField(default=0, max_length=100)
     county = models.CharField(default=0, max_length=100)
     new_positives = models.IntegerField(default=0)
@@ -51,7 +51,7 @@ class covid_cases(models.Model):
     C_Pos_C_Test = models.FloatField(default=0)
 
 class Age(models.Model):
-    age_id = models.IntegerField(default=0)
+    age_id = models.IntegerField(primary_key='True', default=0)
     perc0_5 = models.FloatField(default=0)
     perc5_9 = models.FloatField(default=0)
     perc10_14 = models.FloatField(default=0)
