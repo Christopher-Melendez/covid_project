@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body-content %}
+<h2>You Must Be Logged in To View This Page.</h2>
+<p> Please Login Below</p>
+
+<form id="login-form" method='POST'>
+    {% csrf_token %}   
+    <input type="text" id="username" name="username" value="User"><br>
+    <input type="text" id="password" name="password" value="Pass"><br>
+    <input type="submit" value="Login">
+</form>
+
+
+{% endblock %}
