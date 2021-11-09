@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'heat_map',
     'tables',
     'blog',
+    'login', 
 
 ]
 
@@ -79,24 +80,6 @@ WSGI_APPLICATION = 'covid_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         #replace with database name
-#         'NAME' : 'covidproject',
-#         'USER': 'postgres',
-#         'PASSWORD': '2314',
-#         'HOST': 'localhost'
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'mydatabase',
-#     }
-# }
 
 DATABASES = {
     'default': {
