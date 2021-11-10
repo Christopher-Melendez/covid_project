@@ -19,7 +19,7 @@ def nametest(request):
     #put them all in a list that we name context
 
     context = {
-        'name' : 'Patrick',
+        'name' : 'Patrick', #substitute with name variable later on
         'date' : '10/19/21'    
     }
 
