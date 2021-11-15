@@ -7,10 +7,14 @@ from django.contrib.auth.models import User
 
 from .forms import SignUpForm
 
-from .models import profile
+from .models import Profile
 from datetime import datetime, timedelta
 
-def check_active(request, view):
-    #user_profile = profile.objects.filter(user = request.user)
-    pass
-    return
+from .views import login_view, signup_view
+
+# def check_active(user, view):
+#     #user_profile = profile.objects.filter(user = request.user)
+#     pass
+#     return
+
+

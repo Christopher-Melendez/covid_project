@@ -7,22 +7,26 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-def nametest(request):
-    # if this value "Tammy" instead came from a database, it would be 
-    #something like user.name and that will send dynamic data for that user
-    #name = 'Tammy'
-    #add in the {} to add the key and value (like a dictionary)
-    #in order to be able to access this variable because of this key 
-    #in your nametest.html
+def blog_view(request):
+    if request.user.is_authenticated:
 
-    #rather than do the key and value one at a time and list in { }, we can 
-    #put them all in a list that we name context
+        # if this value "Tammy" instead came from a database, it would be 
+        #something like user.name and that will send dynamic data for that user
+        #name = 'Tammy'
+        #add in the {} to add the key and value (like a dictionary)
+        #in order to be able to access this variable because of this key 
+        #in your nametest.html
 
-    context = {
-        'name' : 'Patrick',
-        'date' : '10/19/21'    
-    }
+        #rather than do the key and value one at a time and list in { }, we can 
+        #put them all in a list that we name context
 
-    # and then add context to the return
-    return render(request, 'nametest.html', context)
+        context = {
+            'name' : 'Patrick',
+            'date' : '10/19/21'    
+        }
+
+        # and then add context to the return
+        return render(request, 'nametest.html', context)
+    else: 
+        return redirect('login_error')
 
