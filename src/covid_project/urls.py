@@ -19,6 +19,7 @@ from pages.views import home_view, maps_view, tables_view
 from blog.views import blog_view
 from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view
 
+
 urlpatterns = [
     path('', home_view, name='home'),
     path('maps/', maps_view, name='maps'),

@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
+
 def blog_view(request):
     if request.user.is_authenticated:
 
