@@ -65,12 +65,22 @@ def maps(map_choice):
         folium.LayerControl().add_to(m)
 
     elif map_choice == 'Median Income':
-        folium.Marker(
-            [43.332600, -74.228500], 
-            popup='<strong>Location Three</strong>',
-            tooltip=tooltip,
-            icon=folium.Icon(color='purple')
-        ).add_to(m)
+        median_data = 'heat_map/data/median income.csv'
+        inc_data = pd.read_csv(median_data) 
+        m.choropleth(
+            geo_data=counties,
+            name='choropleth',
+            data = inc_data,
+            # data= model_to_df(med_income, ['county', 'median_income']),
+            columns=['county', 'median_income'],
+            key_on='feature.properties.name',
+            fill_color='OrRd',
+            fill_opacity=0.7,
+            line_opacity=0.2,
+            legend_name='Median Income',
+        )
+        folium.LayerControl().add_to(m)
+
     elif map_choice == 'Insurance Coverage':
         folium.Marker([43.362600, -74.208500], 
             popup='<strong>Location Four</strong>',
