@@ -65,7 +65,7 @@ def maps(map_choice):
         folium.LayerControl().add_to(m)
 
     elif map_choice == 'Median Income':
-        median_data = 'heat_map/data/median income.csv'
+        median_data = 'heat_map/data/median_income.csv'
         inc_data = pd.read_csv(median_data) 
         m.choropleth(
             geo_data=counties,
