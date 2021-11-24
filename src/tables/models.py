@@ -67,10 +67,10 @@ class covid_deaths(models.Model):
 #   percent_unemployed = models.FloatField(default=0)
 #   percent_poverty = models.FloatField(default=0)
 
-#class health_stats(models.Model):
-#   id = models.BigIntegerField(primary_key="True", default=0)
-#   county = models.CharField(default=0, max_length=100)
-#   percent_insured = models.IntegerField(default=0)
+class health_stats(models.Model):
+   id = models.BigIntegerField(primary_key="True", default=0)
+   county = models.CharField(default=0, max_length=100)
+   percent_insured = models.IntegerField(default=0)
 
 
 class Age(models.Model):
