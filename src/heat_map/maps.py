@@ -4,7 +4,7 @@ import json
 import os
 import tables
 from django.db.models import F
-from tables.models import covid_cases, covid_deaths
+from tables.models import covid_cases, covid_deaths #, labor_stats, health_stats
  
 #import geopandas as gpd
 
@@ -65,13 +65,13 @@ def maps(map_choice):
         folium.LayerControl().add_to(m)
 
     elif map_choice == 'Median Income':
-        median_data = 'heat_map/data/median_income.csv'
+        median_data = 'heat_map/data/labor_stats.csv'
         inc_data = pd.read_csv(median_data) 
         m.choropleth(
             geo_data=counties,
             name='choropleth',
             data = inc_data,
-            # data= model_to_df(med_income, ['county', 'median_income']),
+            # data= model_to_df(labor_info, ['county', 'median_income']),
             columns=['county', 'median_income'],
             key_on='feature.properties.name',
             fill_color='OrRd',
@@ -81,12 +81,73 @@ def maps(map_choice):
         )
         folium.LayerControl().add_to(m)
 
+    #elif map_choice == 'College Education':
+    #   college_data = 'heat_map/data/labor_stats.csv'
+    #   education_data = pd.read_csv(college_data) 
+    #   m.choropleth(
+    #       geo_data=counties,
+    #       name='choropleth',
+    #       data = education_data,
+    #       # data= model_to_df(labor_info, ['county', 'percent_college']),
+    #       columns=['county', 'percent_college'],
+    #       key_on='feature.properties.name',
+    #       fill_color='OrRd',
+    #       fill_opacity=0.7,
+    #       line_opacity=0.2,
+    #       legend_name='Percent of Adults with College Education',
+    #   )
+    #   folium.LayerControl().add_to(m)
+
+    #elif map_choice == 'Unemployment':
+    #   unemploy_data = 'heat_map/data/labor_stats.csv'
+    #   labor_data = pd.read_csv(unemploy_data) 
+    #   m.choropleth(
+    #       geo_data=counties,
+    #       name='choropleth',
+    #       data = labor_data,
+    #       # data= model_to_df(labor_info, ['county', 'percent_unemployed']),
+    #       columns=['county', 'percent_unemployed'],
+    #       key_on='feature.properties.name',
+    #       fill_color='OrRd',
+    #       fill_opacity=0.7,
+    #       line_opacity=0.2,
+    #       legend_name='Percent of Adults who are Unemployed',
+    #   )
+    #   folium.LayerControl().add_to(m)
+
+    #elif map_choice == 'Poverty':
+    #   poverty_data = 'heat_map/data/labor_stats.csv'
+    #   status_data = pd.read_csv(poverty_data) 
+    #   m.choropleth(
+    #       geo_data=counties,
+    #       name='choropleth',
+    #       data = status_data,
+    #       # data= model_to_df(labor_info, ['county', 'percent_poverty']),
+    #       columns=['county', 'percent_poverty'],
+    #       key_on='feature.properties.name',
+    #       fill_color='OrRd',
+    #       fill_opacity=0.7,
+    #       line_opacity=0.2,
+    #       legend_name='Percent of Population Living in Poverty',
+    #   )
+    #   folium.LayerControl().add_to(m)
+
     elif map_choice == 'Insurance Coverage':
-        folium.Marker([43.362600, -74.208500], 
-            popup='<strong>Location Four</strong>',
-            tooltip=tooltip,
-            icon=folium.Icon(color='green', icon='leaf')
-        ).add_to(m)
+        insurance_data = 'heat_map/data/insurance_coverage.csv'
+        coverage_data = pd.read_csv(insurance_data) 
+        m.choropleth(
+            geo_data=counties,
+            name='choropleth',
+            data = coverage_data,
+            # data= model_to_df(health_stats, ['county', 'percent_insured']),
+            columns=['county', 'percent_insured'],
+            key_on='feature.properties.name',
+            fill_color='OrRd',
+            fill_opacity=0.7,
+            line_opacity=0.2,
+            legend_name='Percent Insured',
+        )
+        folium.LayerControl().add_to(m)
     else:
         pass
     
