@@ -1,0 +1,44 @@
+<!-- means this html extends the base.html; basically
+copying whatever was in base.html into this html
+mt = margin top
+pt = padding top
+hr = horizontal ruler
+-->
+
+{% extends 'partials/base.html'%}
+{% block content %}
+<div class="container">
+    <div class = "row mt-5 pt-5">
+        <div class = "col-md-4">
+
+        </div>
+        <div class = "col-md-8">
+            <!-- gives the shadow effect card to put the various blog posts-->
+            <!-- card to put the various blog posts-->
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" alt="img">
+
+                        </div>
+                        <div class = "col-md-8">
+                            <small> 20th June 2021</small>
+                            <hr>
+                            <!-- a link tag, so if we click on it, it will lead to a more detailed page-->
+                            <a class="h3" href = "">First Post </a>
+                            <p class="text-justify my-3">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio corporis cum delectus, inventore provident, nesciunt voluptas facere harum numquam, possimus repellendus porro maiores magni soluta illum. Eius sed ratione quasi.
+
+                                </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

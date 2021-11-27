@@ -1,0 +1,19 @@
+
+
+<!-- btw this is how you comment in html
+    in order to access that variable from the backend, do double curly
+
+<h1>Post</h1>
+
+ loop through each blog post and prints on the screen individually; ul = unordered list
+puts title and author on one line and body on next
+
+<ul>
+{% for post in object_list %}
+    <li>{{ post.title }} - {{ post.author.first_name }} 
+        {{ post.author.last_name }} - {{ post.author.email}}<br/>
+    {{ post.body }}</li>
+{% endfor%}
+</ul>
+
+--->

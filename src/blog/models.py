@@ -1,17 +1,16 @@
 from django.db import models
-from datetime import datetime
-#from datetime import datetime # will give you that date and time
+# imports the user we created in the admin page
+#from django.contrib.auth.models import User
 
-# Create your models here.
+#class Post(models.Model):
+    #defining things we want in our blog posts
+    #title = models.CharField(max_length = 255)
+    # the author is taken from the user from the admin page
+    # on deleting the user, will delete all of the user's blog posts
+    #author = models.ForeignKey(User, on_delete=models.CASCADE, default = 'no author')
+    #body = models.TextField()
 
-# to create a model that essentially acts as a table that will be 
-# stored in our database
-class Post(models.Model):
-    title = models.CharField(max_length = 255)
-    #slug = models.SlugField()
-    #intro = models.TextField()
-    body = models.TextField()
-    created_at = models.DateTimeField(default =datetime.now, blank=True)
-
-    class Meta:
-            ordering = ['-created_at']
+    
+    #def __str__(self):
+        # on the admin page will be able to see the title of the blog post and author rather then a string of numbers
+        #return self.title + ' | ' + str(self.author)
