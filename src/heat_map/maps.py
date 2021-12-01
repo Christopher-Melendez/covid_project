@@ -110,7 +110,7 @@ def maps(map_choice):
             data= model_to_df(health_stats, ['county', 'percent_insured']),
             columns=['county', 'percent_insured'],
             key_on='feature.properties.name',
-            fill_color='PuRd',
+            fill_color='RdPu',
             fill_opacity=0.7,
             line_opacity=0.5,
             legend_name='Percent Insured',
