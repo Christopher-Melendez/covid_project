@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # crispy_forms to help stylize the forms
+    'crispy_forms',
 
     #Our Apps
     'pages',
@@ -44,7 +46,8 @@ INSTALLED_APPS = [
     'tables',
     #'blog',
     'login', 
-    'betablog'
+    'betablog',
+    'users'
 
 ]
 
@@ -135,6 +138,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# bootstrap4 template pack from crispyforms to stylize the forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Static files (CSS, JavaScript, Images)
