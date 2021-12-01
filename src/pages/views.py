@@ -1,18 +1,9 @@
-from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render, redirect
-from django.template import loader
+from django.shortcuts import render
 
-from heat_map.models import Map
-from heat_map.maps import maps
-
-from login.views import login_view
-
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 
 # Create your views here.
 def home_view(request):
-    
+    #Basic Index Page.
     return render(request, 'home.html', {})
 
 
