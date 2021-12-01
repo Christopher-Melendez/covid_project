@@ -1,4 +1,4 @@
-<!-- fixed-top makes sre navbar is still visible as you scroll -->
+<!-- fixed-top makes sre navbar is still visible as you scroll 
 <nav class="navbar navbar-expand-lg navbar-primary bg-primary fixed-top">
     <div class="container">
         <a class="navbar-brand text-white" href="#">Navbar</a>
@@ -20,3 +20,30 @@
         </div>
     </div>
   </nav>
+-->
+  <!doctype html>
+<html>
+<head>
+    
+    <title>Covid and Inequality in New York</title>
+    {% load static %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'pages/style.css' %}">
+    <link rel="icon" type = "image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+
+    <nav>
+        <ul class="menu">
+            <li class="home"><a href="/">Home</a></li>
+            <li class="item"><a href="/maps">Maps</a></li>
+            <li class="item"><a href="/tables">Tables</a></li>
+            <li class="item"><a href="/blog">Covid Stories</a></li>
+            {% if user.is_authenticated %}
+            <li class="item button"><a href="/logout">Logout</a></li>
+            {% else %}
+            <li class="item button"><a href="/login">Login</a></li>
+            <li class="item button secondary"><a href="/signup">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</head>

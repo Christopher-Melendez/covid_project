@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     #'blog',
     'login', 
     'betablog',
-    'users'
+    #'users'
 
 ]
 
