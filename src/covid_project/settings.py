@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tables',
     'blog',
     'login', 
+    'graphs',
 
 ]
 

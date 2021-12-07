@@ -20,6 +20,7 @@ from heat_map.views import maps_view
 from tables.views import tables_view
 from blog.views import blog_view
 from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view
+from graphs.views import graphs_view
 
 
 urlpatterns = [
@@ -32,6 +33,7 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('signup/', signup_view, name="signup"),
     path('login_error/', login_error_view, name="login_error"),
+    path('graphs/', graphs_view, name="graphs"),
     #path('sign_up/', signup_view, name="signup_view"),
     path('admin/', admin.site.urls),
 ]

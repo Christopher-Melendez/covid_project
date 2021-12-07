@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block body-content %}
+
+<body>
+    {% autoescape off %}
+    {{ plot_div }}
+    {% endautoescape %}
+</body>
+
+<form id="graph-form" method='POST'>
+    {% csrf_token %}   
+    <!-- input needs id ..-->
+    <label for="graph-choice">Choose A Graph to View:</label>
+    <select name="graph-choice" id="graph-choice" form="graph-form">
+        <option value="COVID-19 Cases">COVID-19 Cases</option>
+        <option value="COVID-19 Deaths">COVID-19 Deaths</option>
+        <option value="Median Income">Median Income</option>
+        <option value="College Education">College Education</option>
+        <option value="Unemployment">Unemployment</option>
+        <option value="Poverty">Poverty</option>
+        <option value="Insurance Coverage">Insurance Coverage</option>
+    </select>
+    <input type='submit' value='Change Graph Type' />
+</form>
+
+{% endblock %}
