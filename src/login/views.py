@@ -94,9 +94,15 @@ def account_view(request, *args, **kwargs):
 
     # else:
     #     form = PasswordChangeForm(request.user)
+    #src="data:image/gif;base64,xxxxxxxxxxxxx..."
+    print(Profile.objects.get(user=request.user).avatar_img_data.tobytes())
+    
 
-    img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data, content_type="image/jpeg")
+    
+    img_string = "data:image/jpeg;base64," + Profile.objects.get(user=request.user).avatar_img_data.tobytes().decode('jpeg')
+    #print(Profile.objects.get(user=request.user).avatar_img_data, type(Profile.objects.get(user=request.user).avatar_img_data))
+    img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data.tobytes(), content_type="image/jpeg")
 
-    return render(request, 'account.html', {'form': form, 'img': img_data})
+    return render(request, 'account.html', {'form': form, 'img': img_string})
 
 
