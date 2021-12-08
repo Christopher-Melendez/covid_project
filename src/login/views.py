@@ -69,45 +69,41 @@ def log_req_view(request, *args, **kwargs):
 def account_view(request, *args, **kwargs):
     instance = Profile.objects.get(user=request.user)
     if request.method == 'POST':
-        # #Call Modified Signup Form
-        # form = PasswordChangeForm(request.user, request.POST)
+        if 'update_password' in request.POST:
+            #Call Modified Signup Form
+            form_pass = PasswordChangeForm(request.user, request.POST)
 
-        # #If form is filled out & has valid inputs, collect variables and authenticate & login
-        # if form.is_valid():
-        #     form.save()
-        #     user = User.objects.get(username = request.user)
-        #     in_pass = form.cleaned_data.get('password')
-        #     user.set_password(in_pass)
-        #     user.save()
-        #     login(request, user)
-        #     return redirect('/')
-        # #Else Present blank form
-        # inst_id = request.user.id
-        form = UpdateProfileForm(request.POST, request.FILES, instance=instance)
-        if form.is_valid():
-            
-            photo = form.save()
-            
-            # #uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
-            # print(uploaded_avatar_img.avatar_img_data)
-            # uploaded_avatar_img.save()
-            return redirect('account')
+            #If form is filled out & has valid inputs, collect variables and authenticate & login
+            if form_pass.is_valid():
+                form_pass.save()
+                user = User.objects.get(username = request.user)
+                in_pass = form_pass.cleaned_data.get('password')
+                user.set_password(in_pass)
+                user.save()
+                login(request, user)
+                return redirect('/')
+            #Else Present blank form
+            else:
+                form_pass = PasswordChangeForm(request.user)
+
+        elif 'update_photo' in request.POST:
+            form_photo = UpdateProfileForm(request.POST, request.FILES, instance=instance)
+            if form_photo.is_valid():
+                
+                photo = form_photo.save()
+                
+                # #uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
+                # print(uploaded_avatar_img.avatar_img_data)
+                # uploaded_avatar_img.save()
+                return redirect('account')
+            else:
+                form_photo = UpdateProfileForm()
     else:
-        form = UpdateProfileForm()
-
-    # # else:
-    # #     form = PasswordChangeForm(request.user)
-    # #src="data:image/gif;base64,xxxxxxxxxxxxx..."
-    # print(Profile.objects.get(user=request.user).avatar_img_data.tobytes())
+        form_pass = PasswordChangeForm(request.user)
+        form_photo = UpdateProfileForm()
     
 
-    
-    # img_string = Profile.objects.get(user=request.user).avatar_img_data.tobytes()
-    #print(Profile.objects.get(user=request.user).avatar_img_data, type(Profile.objects.get(user=request.user).avatar_img_data))
-    #img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data.tobytes(), content_type="image/jpeg")
 
-    
-
-    return render(request, 'account.html', {'form': form, 'instance': instance})
+    return render(request, 'account.html', {'form_photo': form_photo, 'form_pass': form_pass, 'instance': instance})
 
 

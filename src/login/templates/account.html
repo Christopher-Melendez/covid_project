@@ -1,46 +1,52 @@
 {% extends 'base.html' %}
 
 {% block body-content %}
-<h2>Manage Account</h2>
-<p>Hi {{request.user}}, update any of your information here.</p>
 
-<hr>
+<div id="profile-wrapper">
+    <hr>
+    <h2>Manage Account</h2>
+    <p>Hi {{request.user}}, update any of your information here.</p><br>
+    <img id="image" src="{{instance.photo.url}} " width="100px" height="100px">
+</div>
 
-<!-- <h3>Update Password</h3>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Save changes</button>
+
+<div id="update-pass-wrapper">
+    <hr>
+    <h3>Update Password</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form_pass }}
+        <button type="submit" name="update_password" value="Update Password"></button>
   </form>
-<hr> -->
+</div>
 
-<h3>Update Profile Picture</h3>
-<form action="" enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form.as_p }}
-    </table>
-    <input type="submit" value="Upload">
-</form>
+<div id="update-photo-wrapper">
+    <hr>
+    <h3>Update Profile Picture</h3>
+    <form action="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form_photo }}
+        </table>
+        <input type="submit" name="update-image" value="Upload Image">
+    </form>
+</div>
 
-
-
-<img id="image" src="{{instance.photo.url}} " width="100px" height="100px">
-<!-- <img id="image" src= {{img}} ></img> -->
-
-  
-<!-- <hr>
-<p>Username: {{user.username}}</p>
-<br>
-<p>Email: {{user.email}} </p>
-<br>
-<p>Password: {{user.password}} </p>
-<br>
-<p>Profile: {{profile.avatar}} </p> -->
-
-
-
-
-
+<style>
+    #profile-wrapper, #update-pass-wrapper, #update-photo-wrapper {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: auto;
+        display: block;
+        
+    }
+    ul {
+        color: gray;
+        font-size: 13px;
+        padding-left: 20px;
+    }
+</style>
 
 {% endblock %}
