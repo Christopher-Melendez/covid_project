@@ -17,4 +17,4 @@ class SignUpForm(UserCreationForm):
 class UpdateProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar_img']
+        fields = ['photo',]

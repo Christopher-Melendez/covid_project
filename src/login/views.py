@@ -19,6 +19,7 @@ def signup_view(request):
             in_pass = form.cleaned_data.get('password1')
             user = authenticate(username=in_username, password=in_pass)
             login(request, user)
+            #new_profile = Profile.objects.create(user=request.user)
             return redirect('/')
         #Else Present blank form
     else:
@@ -66,6 +67,7 @@ def log_req_view(request, *args, **kwargs):
         return render(request, 'nametest.html', {'logged_in': logged_in})
 
 def account_view(request, *args, **kwargs):
+    instance = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         # #Call Modified Signup Form
         # form = PasswordChangeForm(request.user, request.POST)
@@ -81,28 +83,31 @@ def account_view(request, *args, **kwargs):
         #     return redirect('/')
         # #Else Present blank form
         # inst_id = request.user.id
-        instance = Profile.objects.get(user=request.user)
         form = UpdateProfileForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             
-            uploaded_avatar_img = form.save(commit=False)
-            uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
-            uploaded_avatar_img.save()
+            photo = form.save()
+            
+            # #uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
+            # print(uploaded_avatar_img.avatar_img_data)
+            # uploaded_avatar_img.save()
             return redirect('account')
     else:
         form = UpdateProfileForm()
 
-    # else:
-    #     form = PasswordChangeForm(request.user)
-    #src="data:image/gif;base64,xxxxxxxxxxxxx..."
-    print(Profile.objects.get(user=request.user).avatar_img_data.tobytes())
+    # # else:
+    # #     form = PasswordChangeForm(request.user)
+    # #src="data:image/gif;base64,xxxxxxxxxxxxx..."
+    # print(Profile.objects.get(user=request.user).avatar_img_data.tobytes())
     
 
     
-    img_string = "data:image/jpeg;base64," + Profile.objects.get(user=request.user).avatar_img_data.tobytes().decode('jpeg')
+    # img_string = Profile.objects.get(user=request.user).avatar_img_data.tobytes()
     #print(Profile.objects.get(user=request.user).avatar_img_data, type(Profile.objects.get(user=request.user).avatar_img_data))
-    img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data.tobytes(), content_type="image/jpeg")
+    #img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data.tobytes(), content_type="image/jpeg")
 
-    return render(request, 'account.html', {'form': form, 'img': img_string})
+    
+
+    return render(request, 'account.html', {'form': form, 'instance': instance})
 
 

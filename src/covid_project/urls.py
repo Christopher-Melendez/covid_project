@@ -19,6 +19,8 @@ from pages.views import home_view
 from heat_map.views import maps_view
 from tables.views import tables_view
 #from blog.views import blog_view, BlogHome
+from django.conf import settings
+from django.conf.urls.static import static
 
 from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view, account_view
 
@@ -39,6 +41,8 @@ urlpatterns = [
     # using as.view because we are using class based views 
     #path('blog/', BlogHome.as_view(), name="blog"),
     path('', include('betablog.urls')),
+
     #path('', include('users.urls')),
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
