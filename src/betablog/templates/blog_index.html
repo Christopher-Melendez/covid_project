@@ -59,8 +59,12 @@ adapted from bootstrap
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="" alt="img">
-
+                            {% for profile in profiles %}
+                                {% if profile.user == post.author %}
+                                    {{post.author}}
+                                    <img id="image" src="{{profile.photo.url}} " width="100px" height="100px" alt="Profile Picture">
+                                {% endif %}
+                            {% endfor %}
                         </div>
                         <div class = "col-md-8">
                             <!-- the template tag we use to pass out data is the double curly brackets

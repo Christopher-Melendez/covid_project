@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import PostModels
 #import forms
 from .forms import PostModelForm
+from login.models import Profile
 
 from login.views import login_view, log_req_view
 
@@ -33,9 +34,17 @@ def index(request):
 
         # context dictionary to pass multiple attributes to the index file
         # in a more systematic way 
+
+        #Temp thing to make pics work :D
+        profiles = Profile.objects.all()
+        for i in profiles:
+            print(i.user)
+        print(posts[1].author)
+
         context = {
             'posts' : posts,
-            'form' : form
+            'form' : form,
+            'profiles': profiles,
         }
         # can render templates
         # render(request, TEMPLATENAME)

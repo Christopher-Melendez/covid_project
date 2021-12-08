@@ -6,7 +6,7 @@
     <hr>
     <h2>Manage Account</h2>
     <p>Hi {{request.user}}, update any of your information here.</p><br>
-    <img id="image" src="{{instance.photo.url}} " width="100px" height="100px">
+    <img id="image" src="{{instance.photo.url}} " width="100px" height="100px" alt="Profile Picture">
 </div>
 
 
@@ -28,7 +28,7 @@
         <table>
             {{ form_photo }}
         </table>
-        <input type="submit" name="update-image" value="Upload Image">
+        <input type="submit" name="update_photo" value="Upload Image">
     </form>
 </div>
 
