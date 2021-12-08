@@ -18,7 +18,12 @@ from django.urls import path, include
 from pages.views import home_view
 from heat_map.views import maps_view
 from tables.views import tables_view
-from blog.views import blog_view
+#from blog.views import blog_view, BlogHome
+from django.conf import settings
+from django.conf.urls.static import static
+
+from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view, account_view
+#from blog.views import blog_view
 from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view
 from graphs.views import graphs_view
 
@@ -27,7 +32,7 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('maps/', maps_view, name='maps'),
     path('tables/', tables_view, name='tables'),
-    path('blog/', blog_view, name='blog'),
+    #path('blog/', blog_view, name='blog'),
     path('log_req_view', log_req_view, name="log_req_view"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
@@ -36,4 +41,11 @@ urlpatterns = [
     path('graphs/', graphs_view, name="graphs"),
     #path('sign_up/', signup_view, name="signup_view"),
     path('admin/', admin.site.urls),
+    # using as.view because we are using class based views 
+    #path('blog/', BlogHome.as_view(), name="blog"),
+    path('', include('betablog.urls')),
+
+    #path('', include('users.urls')),
+
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

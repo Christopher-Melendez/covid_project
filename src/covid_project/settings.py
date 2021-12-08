@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'pages',
     'heat_map',
     'tables',
-    'blog',
+    'betablog',
     'login', 
     'graphs',
 
