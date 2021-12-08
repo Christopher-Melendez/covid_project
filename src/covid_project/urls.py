@@ -20,7 +20,7 @@ from heat_map.views import maps_view
 from tables.views import tables_view
 #from blog.views import blog_view, BlogHome
 
-from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view
+from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view, account_view
 
 
 urlpatterns = [
@@ -33,6 +33,7 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('signup/', signup_view, name="signup"),
     path('login_error/', login_error_view, name="login_error"),
+    path('account/', account_view, name="account"),
     #path('sign_up/', signup_view, name="signup_view"),
     path('admin/', admin.site.urls),
     # using as.view because we are using class based views 
