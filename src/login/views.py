@@ -1,7 +1,11 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from .forms import SignUpForm, UpdateProfileForm
+from .models import Profile
 
 def signup_view(request):
     if request.method == 'POST':
@@ -60,5 +64,45 @@ def log_req_view(request, *args, **kwargs):
     else:
         logged_in = True
         return render(request, 'nametest.html', {'logged_in': logged_in})
+
+def account_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        # #Call Modified Signup Form
+        # form = PasswordChangeForm(request.user, request.POST)
+
+        # #If form is filled out & has valid inputs, collect variables and authenticate & login
+        # if form.is_valid():
+        #     form.save()
+        #     user = User.objects.get(username = request.user)
+        #     in_pass = form.cleaned_data.get('password')
+        #     user.set_password(in_pass)
+        #     user.save()
+        #     login(request, user)
+        #     return redirect('/')
+        # #Else Present blank form
+        # inst_id = request.user.id
+        instance = Profile.objects.get(user=request.user)
+        form = UpdateProfileForm(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            
+            uploaded_avatar_img = form.save(commit=False)
+            uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
+            uploaded_avatar_img.save()
+            return redirect('account')
+    else:
+        form = UpdateProfileForm()
+
+    # else:
+    #     form = PasswordChangeForm(request.user)
+    #src="data:image/gif;base64,xxxxxxxxxxxxx..."
+    print(Profile.objects.get(user=request.user).avatar_img_data.tobytes())
+    
+
+    
+    img_string = "data:image/jpeg;base64," + Profile.objects.get(user=request.user).avatar_img_data.tobytes().decode('jpeg')
+    #print(Profile.objects.get(user=request.user).avatar_img_data, type(Profile.objects.get(user=request.user).avatar_img_data))
+    img_data = HttpResponse(Profile.objects.get(user=request.user).avatar_img_data.tobytes(), content_type="image/jpeg")
+
+    return render(request, 'account.html', {'form': form, 'img': img_string})
 
 

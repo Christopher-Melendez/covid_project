@@ -1,0 +1,31 @@
+{% extends 'partials/base.html'%}
+<!-- changes the title in the base.html file according to the page-->
+{% block title %}Sign Up{% endblock %}
+<!-- loads in crispy forms tags to stylize forms -->
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <!-- pt -3 describes padding between first opst and nav bar-->
+    <div class = "row mt-5 pt-3">
+        <!--the form on the left side-->
+        <div class = "col-md-5 offset-md-6">
+            <!-- my-3 to line up with the blog posts on right -->
+            <div class = "card my-3 shadow">
+                <div class = "card-body">
+                    <h4>Sign Up Here!</h4>
+                    <form method = "POST">
+                        <!--csrf is passed to send things in a secure manner--> 
+                        {% csrf_token %}
+                        <!-- passing in a filter on the form-->
+                        {{ form | crispy }}
+                        <!-- submit button
+                            btn (button) is using bootstrap; block makes the button longer-->
+                        <input class = "btn btn-primary btn-block" type = "submit" value="Sign Up">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

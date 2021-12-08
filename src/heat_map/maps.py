@@ -14,7 +14,7 @@ def maps(map_choice):
     
     #Initializing Folium Map Cenetered in Central New York
     tooltip = 'Click for More Info'
-    m = folium.Map(location=[43.2994, -74.2179], zoom_start=7)
+    m = folium.Map(location=[43.0994, -75.9179], zoom_start=6)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 
     if map_choice == 'COVID-19 Cases':
@@ -25,9 +25,9 @@ def maps(map_choice):
             data= model_to_df(covid_cases, ['county', 'C_Pos_C_Test']),
             columns=['county', 'C_Pos_C_Test'],
             key_on='feature.properties.name',
-            fill_color='OrRd',
+            fill_color='YlGn',
             fill_opacity=0.7,
-            line_opacity=0.2,
+            line_opacity=0.5,
             legend_name='Percent Positive',
         )
         folium.LayerControl().add_to(m)
@@ -42,7 +42,7 @@ def maps(map_choice):
             key_on='feature.properties.name',
             fill_color='OrRd',
             fill_opacity=0.7,
-            line_opacity=0.2,
+            line_opacity=0.5,
             legend_name='Deaths Per 100,000',
         )
         folium.LayerControl().add_to(m)
@@ -54,9 +54,9 @@ def maps(map_choice):
             data= model_to_df(labor_stats, ['county', 'median_income']),
             columns=['county', 'median_income'],
             key_on='feature.properties.name',
-            fill_color='OrRd',
+            fill_color='GnBu',
             fill_opacity=0.7,
-            line_opacity=0.2,
+            line_opacity=0.5,
             legend_name='Median Income',
         )
         folium.LayerControl().add_to(m)
@@ -68,9 +68,9 @@ def maps(map_choice):
           data= model_to_df(labor_stats, ['county', 'percent_college']),
           columns=['county', 'percent_college'],
           key_on='feature.properties.name',
-          fill_color='OrRd',
+          fill_color='BuPu',
           fill_opacity=0.7,
-          line_opacity=0.2,
+          line_opacity=0.5,
           legend_name='Percent of Adults with College Education',
       )
       folium.LayerControl().add_to(m)
@@ -82,9 +82,9 @@ def maps(map_choice):
           data= model_to_df(labor_stats, ['county', 'percent_unemployed']),
           columns=['county', 'percent_unemployed'],
           key_on='feature.properties.name',
-          fill_color='OrRd',
+          fill_color='YlGnBu',
           fill_opacity=0.7,
-          line_opacity=0.2,
+          line_opacity=0.5,
           legend_name='Percent of Adults who are Unemployed',
       )
       folium.LayerControl().add_to(m)
@@ -96,9 +96,9 @@ def maps(map_choice):
           data= model_to_df(labor_stats, ['county', 'percent_poverty']),
           columns=['county', 'percent_poverty'],
           key_on='feature.properties.name',
-          fill_color='OrRd',
+          fill_color='YlOrBr',
           fill_opacity=0.7,
-          line_opacity=0.2,
+          line_opacity=0.5,
           legend_name='Percent of Population Living in Poverty',
       )
       folium.LayerControl().add_to(m)
@@ -110,9 +110,9 @@ def maps(map_choice):
             data= model_to_df(health_stats, ['county', 'percent_insured']),
             columns=['county', 'percent_insured'],
             key_on='feature.properties.name',
-            fill_color='OrRd',
+            fill_color='RdPu',
             fill_opacity=0.7,
-            line_opacity=0.2,
+            line_opacity=0.5,
             legend_name='Percent Insured',
         )
         folium.LayerControl().add_to(m)
