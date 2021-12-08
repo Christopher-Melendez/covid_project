@@ -1,9 +1,8 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from .forms import SignUpForm, UpdateProfileForm
 from .models import Profile
 
@@ -67,8 +66,10 @@ def log_req_view(request, *args, **kwargs):
         return render(request, 'nametest.html', {'logged_in': logged_in})
 
 def account_view(request, *args, **kwargs):
+    #Find out which Profile is Logged in
     instance = Profile.objects.get(user=request.user)
     if request.method == 'POST':
+        #If Pass Form is submitted
         if 'update_password' in request.POST:
             #Call Modified Signup Form
             form_pass = PasswordChangeForm(request.user, request.POST)
@@ -81,29 +82,27 @@ def account_view(request, *args, **kwargs):
                 user.set_password(in_pass)
                 user.save()
                 login(request, user)
-                return redirect('/')
+                return redirect('account')
             #Else Present blank form
             else:
                 form_pass = PasswordChangeForm(request.user)
-
+        #If photo form submitted
         elif 'update_photo' in request.POST:
+            #Collect Valid Form
             form_photo = UpdateProfileForm(request.POST, request.FILES, instance=instance)
             if form_photo.is_valid():
-                
+                #Save New Photo
                 photo = form_photo.save()
-                
-                # #uploaded_avatar_img.avatar_img_data = form.cleaned_data['avatar_img'].file.read()
-                # print(uploaded_avatar_img.avatar_img_data)
-                # uploaded_avatar_img.save()
                 return redirect('account')
+            #Else Blank Form
             else:
                 form_photo = UpdateProfileForm()
+    
+    #If no form submitted Give both blank forms.
     else:
         form_pass = PasswordChangeForm(request.user)
         form_photo = UpdateProfileForm()
     
-
-
     return render(request, 'account.html', {'form_photo': form_photo, 'form_pass': form_pass, 'instance': instance})
 
 

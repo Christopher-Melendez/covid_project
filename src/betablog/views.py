@@ -37,9 +37,7 @@ def index(request):
 
         #Temp thing to make pics work :D
         profiles = Profile.objects.all()
-        for i in profiles:
-            print(i.user)
-        print(posts[1].author)
+        
 
         context = {
             'posts' : posts,
