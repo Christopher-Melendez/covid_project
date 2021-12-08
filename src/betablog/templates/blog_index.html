@@ -9,7 +9,8 @@ adapted from bootstrap
 
 
 {% extends 'partials/base.html'%}
-
+<!-- changes the title in the base.html file according to the page-->
+{% block title %}Blog Home Page{% endblock %}
 <!-- loads in crispy forms tags to stylize forms -->
 {% load crispy_forms_tags %}
 {% block content %}

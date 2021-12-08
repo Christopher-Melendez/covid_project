@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # crispy_forms to help stylize the forms
     'crispy_forms',
 
+
     #Our Apps
     'pages',
     'heat_map',
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     #'blog',
     'login', 
     'betablog',
-    #'users'
+    #'users',
 
 ]
 

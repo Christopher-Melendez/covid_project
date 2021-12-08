@@ -38,7 +38,6 @@ urlpatterns = [
     # using as.view because we are using class based views 
     #path('blog/', BlogHome.as_view(), name="blog"),
     path('', include('betablog.urls')),
+    #path('', include('users.urls')),
 
-
-    #path('admin/', blog_view, name
 ]
