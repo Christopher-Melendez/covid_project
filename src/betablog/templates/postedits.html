@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block title %}Edit Post{% endblock %}
+{% block body-content %}
+<!-- loads in crispy forms tags to stylize forms -->
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+
+<div class="container">
+    <!-- pt -3 describes padding between first post and nav bar-->
+    <div class = "row mt-5 pt-3">
+        <!--the form on the left side-->
+        <div class = "col-md-8 offset-md-2">
+            <!-- my-3 to line up with the blog posts on right -->
+            <div class = "card my-3 shadow">
+                <div class="card-body">
+                    <form method ="POST">
+                        {%csrf_token%}
+                        {{form|crispy}}
+                        <input class="btn btn-primary btn-sm" type = "submit" value ="Save" >
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

@@ -10,4 +10,8 @@ class PostModelForm(forms.ModelForm):
         # fields --> which fields within the model you want to have access to (look in models.py)
         # we only want the user to access the title and the content, not the author and date created
         fields = ('title', 'content')
-        
+
+class PostUpdateForm(forms.ModelForm):
+    class Meta:
+        model = PostModels
+        fields = ('title', 'content')

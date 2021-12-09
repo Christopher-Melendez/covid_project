@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from .models import PostModels
 #import forms
-from .forms import PostModelForm
+from .forms import PostModelForm, PostUpdateForm
 from login.models import Profile
 
 from login.views import login_view, log_req_view
@@ -49,4 +49,44 @@ def index(request):
         # passing the dictionary {'posts' : posts} allows this queryset to be accessible 
         # by index.html so that the html can be connected to the queryset
         return render(request, 'blog_index.html', context)
+
+# view for detailed posts
+def detailedPost(request, pk):
+    post = PostModels.objects.get(id = pk)
+    profiles = Profile.objects.all()
+    context = {
+        'post' : post,
+        'profiles': profiles,
+    }
+    return render(request, 'detailedPost.html', context)
+
+# to edit posts
+def PostEdits(request, pk):
+    post = PostModels.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = PostUpdateForm(request.POST, instance = post)
+        if form.is_valid():
+            form.save()
+            return redirect('postdetails', pk=post.id)
+    else:
+        form = PostUpdateForm(instance=post)
+    context = {
+        'post' : post,
+        'form' : form,
+        
+
+    }
+    return render(request, 'postedits.html', context)
+
+# views for deleting posts
+def deletepost(request, pk):
+    post = PostModels.objects.get(id=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('blog-index')
+    context = {
+        'post' : post,
+    }
+    return render(request, 'deletepost.html', context)
 

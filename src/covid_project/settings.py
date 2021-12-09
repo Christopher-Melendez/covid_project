@@ -138,11 +138,28 @@ USE_L10N = True
 
 USE_TZ = True
 
+# bootstrap4 template pack from crispyforms to stylize the forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# need in order to send emails when resetting password; 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+#uses gmail 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'covidblogsreset@gmail.com'
+# uses environment variables to hide password and django will send a email for us
+EMAIL_HOST_PASSWORD = 'covidblogs'
+#os.environ.get('EMAIL_PASSWORD')
+EMAIL_PORT = 587
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Media/') 
 MEDIA_URL = '/Media/'

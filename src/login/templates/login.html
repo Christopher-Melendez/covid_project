@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% block title %}Login{% endblock %}
 {% block body-content %}
 
 <h2> Login Page </h2>
@@ -7,10 +8,13 @@
     {{ form.as_p }}
     <input type="submit" value="Login"><br>
 
+    <!-- forget password-->
+    <div class = text-center my-3">
+        <a href="{% url 'resetpass' %}"> Forget Password?</a>
+    
+    </div>
+
     <p> Don't have an account? <a href="/signup">Sign Up Now</a> </p>
-
-
-
 </form>
 
 {% endblock %}

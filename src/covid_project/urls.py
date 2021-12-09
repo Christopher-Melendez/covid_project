@@ -34,7 +34,7 @@ urlpatterns = [
     path('tables/', tables_view, name='tables'),
     #path('blog/', blog_view, name='blog'),
     path('log_req_view', log_req_view, name="log_req_view"),
-    path('login/', login_view, name="login"),
+    #path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
     path('signup/', signup_view, name="signup"),
     path('login_error/', login_error_view, name="login_error"),
@@ -44,6 +44,7 @@ urlpatterns = [
     # using as.view because we are using class based views 
     #path('blog/', BlogHome.as_view(), name="blog"),
     path('', include('betablog.urls')),
+    path('', include('login.urls')),
     path('account/', account_view, name="account")
 
     #path('', include('users.urls')),

@@ -9,9 +9,10 @@ adapted from bootstrap
 
 
 {% extends 'base.html'%}
+{% block title %}Blog Home Page{% endblock %}
 {% block body-content %}
 <!-- changes the title in the base.html file according to the page-->
-{% block title %}Blog Home Page{% endblock %}
+
 <!-- loads in crispy forms tags to stylize forms -->
 {% load crispy_forms_tags %}
 {% block content %}
@@ -59,10 +60,11 @@ adapted from bootstrap
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
+                            <h6>Posted by: {{post.author}}</h6>
                             {% for profile in profiles %}
                                 {% if profile.user == post.author %}
-                                    {{post.author}}
-                                    <img id="image" src="{{profile.photo.url}} " width="100px" height="100px" alt="Profile Picture">
+                                
+                                    <img id="image"  src="{{profile.photo.url}} " width="100px" height="100px" alt="Profile Picture">
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -75,7 +77,7 @@ adapted from bootstrap
                             <small> {{post.date_created}}</small>
                             <hr>
                             <!-- a link tag, so if we click on it, it will lead to a more detailed page-->
-                            <a class="h3" href = ""> {{post.title}} </a>
+                            <a class="h3" href = "{% url 'postdetails' post.id %}">{{post.title}} </a>
                             <p class="text-justify my-3">
                                 <p>
                                     {{post.content}}
@@ -87,9 +89,7 @@ adapted from bootstrap
 
             </div>
             {% endfor %}
-        </div>
-
-        
+        </div>        
     </div>
 </div>
 {% endblock %}
