@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_view
 
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
+    # path('login/', views.login, name='login'),
     # class based views requires as_view method
     # 4 step process to reset password
     path('forget_password/', auth_view.PasswordResetView.as_view(template_name='resetpass.html'), name = 'resetpass'),
