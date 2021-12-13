@@ -6,19 +6,17 @@ from tables.models import covid_cases, covid_deaths, labor_stats, health_stats
 #Import Data from Data Models and Convert to Pandas Data Frame
 from tables.tables import model_to_df
 
-
 def maps(map_choice):
-    #Temp Stuff Till Database Finalized...
+    #NY County Outline JSON Data
     counties = 'heat_map/data/ny_counties.json'    
     
-    
-    #Initializing Folium Map Cenetered in Central New York
+    #Initializing Folium Map Centered in Central New York
     tooltip = 'Click for More Info'
     m = folium.Map(location=[43.0994, -75.9179], zoom_start=6)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 
     if map_choice == 'COVID-19 Cases':
-        #Ryan Created Chloropleth Map For Percent Stat of Positive Covid Cases / Total Tests Performed by County
+        #Percent Stat of Positive Covid Cases / Total Tests Performed by County
         m.choropleth(
             geo_data=counties,
             name='choropleth',
@@ -33,7 +31,7 @@ def maps(map_choice):
         folium.LayerControl().add_to(m)
 
     elif map_choice == 'COVID-19 Deaths':
-        #Ryan Created Chloropleth Map For Deaths Per 100k By County
+        #Map For Deaths Per 100k By County
         m.choropleth(
             geo_data=counties,
             name='choropleth',
