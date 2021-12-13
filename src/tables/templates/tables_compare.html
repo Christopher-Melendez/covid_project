@@ -1,0 +1,129 @@
+{% extends 'base.html'%}
+{% block title %}Tables{% endblock %}
+{% block body-content %}
+
+
+<h2>Tables And Statistics</h2>
+
+<br><br>
+
+
+
+<br>
+<div id="tables-wrapper">
+    <div class ="table-wrapper" id="table-wrapper1">
+        <h3> Statistics For: {{ table_choice1 }} </h3>
+        {% autoescape off %}
+            {{ table_html1 }}
+        {% endautoescape %}
+    </div>
+
+    <div class ="table-wrapper" id="table-wrapper2">
+        <h3> Statistics For: {{ table_choice2 }} </h3>
+        {% autoescape off %}
+            {{ table_html2 }}
+        {% endautoescape %}
+    </div>
+</div>
+
+<br><br><br>
+
+<form id="table-form" method='POST'>
+    {% csrf_token %}   
+    <label for="table-choice1">Choose A Statistic:</label>
+    <select name="table-choice1" id="table-choice1" form="table-form">
+        <option value="COVID-19 Cases">COVID-19 Cases</option>
+        <option value="COVID-19 Deaths">COVID-19 Deaths</option>
+        <option value="Median Income">Median Income</option>
+        <option value="College Education">College Education</option>
+        <option value="Unemployment">Unemployment</option>
+        <option value="Poverty">Poverty</option>
+        <option value="Insurance Coverage">Insurance Coverage</option>
+    </select>
+    <input type='submit' value='Change Table Type' />
+
+    <label for="table-choice2">Choose A Statistic:</label>
+    <select name="table-choice2" id="table-choice2" form="table-form">
+        <option value="COVID-19 Cases">COVID-19 Cases</option>
+        <option value="COVID-19 Deaths">COVID-19 Deaths</option>
+        <option value="Median Income">Median Income</option>
+        <option value="College Education">College Education</option>
+        <option value="Unemployment">Unemployment</option>
+        <option value="Poverty">Poverty</option>
+        <option value="Insurance Coverage">Insurance Coverage</option>
+    </select>
+    <input type='submit' value='Change Table Type' />
+
+    <div id="comparison-wrapper">
+        <div>
+            <p style="margin-right:20px;">Comparison Mode: </p>
+        </div>
+        <div>
+        <label class="switch">
+            <input type="checkbox" id="comparison-mode2" name="comparison-mode2" value="true" onchange="document.getElementById('table-form').submit()">
+            <span class="slider"></span>
+        </label>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.getElementById('comparison-mode2').checked = "{{ comparison_mode_context2 }}";
+    document.getElementById('table-choice1').value = "{{ table_choice1 }}";
+    document.getElementById('table-choice2').value = "{{ table_choice2 }}";
+</script>
+
+
+
+<style>
+    .table-wrapper{
+        height: 50vh;
+        display: inline-block;
+        overflow-y: auto;
+    }
+
+    #tables-wrapper {
+        display: flex;
+        margin: auto;
+    }
+
+    #table-wrapper1 {
+        margin-right: 45px;
+    }
+
+    /*CSS Adapted From https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables*/
+    table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        border: 3px solid gray;
+    }
+
+    thead th:nth-child(1) {
+        width: 30%;
+    }
+
+    thead th:nth-child(2) {
+        width: 20%;
+    }
+
+    thead th:nth-child(3) {
+        width: 15%;
+    }
+
+    thead th:nth-child(4) {
+        width: 35%;
+    }
+
+    th, td {
+        padding: 20px;
+    }
+
+    #comparison-wrapper {
+        display: inline-flex;
+        padding: 10px;
+        margin: 20px;
+    }
+</style>
+
+
+{% endblock %}

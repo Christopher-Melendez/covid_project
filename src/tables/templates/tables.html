@@ -11,7 +11,7 @@
 
 <br>
 
-<div id="table-wrapper">
+<div class="table-wrapper">
     {% autoescape off %}
         {{ table_html }}
     {% endautoescape %}
@@ -33,6 +33,18 @@
         <option value="Insurance Coverage">Insurance Coverage</option>
     </select>
     <input type='submit' value='Change Table Type' />
+
+    <div id="comparison-wrapper">
+        <div>
+            <p class= style="margin-right:20px;">Comparison Mode: </p>
+        </div>
+        <div>
+            <label class="switch">
+                <input type="checkbox" id="comparison-mode1" name="comparison-mode1" value="true" onchange="document.getElementById('table-form').submit()">   
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
 </form>
 
 <script>
@@ -40,10 +52,43 @@
 </script>
 
 <style>
-    #table-wrapper{
+    .table-wrapper{
         height: 50vh;
         display: inline-block;
         overflow-y: auto;
+    }
+    /*CSS Adapted From https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables*/
+    table {
+        table-layout: fixed;
+        width: 50%;
+        border-collapse: collapse;
+        border: 3px solid gray;
+    }
+
+    thead th:nth-child(1) {
+        width: 30%;
+    }
+
+    thead th:nth-child(2) {
+        width: 20%;
+    }
+
+    thead th:nth-child(3) {
+        width: 15%;
+    }
+
+    thead th:nth-child(4) {
+        width: 35%;
+    }
+
+    th, td {
+        padding: 20px;
+    }
+
+    #comparison-wrapper {
+        display: inline-flex;
+        padding: 10px;
+        margin: 20px;
     }
 </style>
 
