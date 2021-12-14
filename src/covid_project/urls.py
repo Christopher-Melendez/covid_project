@@ -33,24 +33,18 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('maps/', maps_view, name='maps'),
     path('tables/', tables_view, name='tables'),
-    #path('blog/', blog_view, name='blog'),
     path('log_req_view', log_req_view, name="log_req_view"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
     path('signup/', signup_view, name="signup"),
     path('login_error/', login_error_view, name="login_error"),
     path('graphs/', graphs_view, name="graphs"),
-    #path('sign_up/', signup_view, name="signup_view"),
     path('admin/', admin.site.urls),
-    # using as.view because we are using class based views 
-    #path('blog/', BlogHome.as_view(), name="blog"),
     path('', include('betablog.urls')),
     path('', include('login.urls')),
     path('account/', account_view, name="account"),
     path('contact/', contact_view, name="contact")
 
-
-    #path('', include('users.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

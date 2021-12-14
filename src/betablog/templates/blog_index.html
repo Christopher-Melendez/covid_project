@@ -30,17 +30,16 @@ adapted from bootstrap
 
 <div class="container">
     <div class = "row ml-1">
-        <p> Please share your story on the left and read other people's stories on the right</p>
         </div>
-
     </div>
-    <!-- pt -3 describes padding between first post and nav bar-->
+
     <div class = "row mt-2">
         <!--the form on the left side-->
         <div class = "col-md-4">
             <!-- my-3 to line up with the blog posts on right -->
-            <div class = "card my-3 shadow">
-                <div class = "card-body">
+            <div class = "card my-3">
+                <div class = "card-body card border-dark">
+                    <h5 class="card-title"> Write your post here!</h5>
                     <form method = "POST">
                         <!--csrf is passed to send things in a secure manner--> 
                         {% csrf_token %}
@@ -48,7 +47,7 @@ adapted from bootstrap
                         {{ form | crispy }}
                         <!-- submit button
                             btn (button) is using bootstrap; block makes the button longer-->
-                        <input class = "btn btn-primary btn-block" type = "submit" value="Post">
+                        <input class = "btn btn-dark btn-block" type = "submit" value="Post">
                     </form>
                 </div>
             </div>
@@ -59,17 +58,16 @@ adapted from bootstrap
             the posts refers to the posts query we have in views.py, which includes all the objects 
             post is just a variable we created in python to loop through and now we can take data from that database ex: the dates-->
             {% for post in posts %}
-            <!-- gives the shadow effect card to put the various blog posts-->
             <!-- card to put the various blog posts
-            my-3 gives some space between the top and bottom of -->
-            <div class="card shadow my-3">
-                <div class="card-body">
+            my-3 gives some space between the top and bottom of card-->
+            <div class="card my-3">
+                <div class="card-body card border-dark">
                     <div class="row">
                         <div class="col-md-4">
+                            <!-- gets the author of the post and shows the profile picture-->
                             <h6>Posted by: {{post.author}}</h6>
                             {% for profile in profiles %}
                                 {% if profile.user == post.author %}
-                                
                                     <img id="image"  src="{{profile.photo.url}} " width="100px" height="100px" alt="Profile Picture">
                                 {% endif %}
                             {% endfor %}

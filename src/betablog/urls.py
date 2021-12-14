@@ -9,4 +9,6 @@ urlpatterns = [
     path('blogdetails/<int:pk>/', views.detailedPost, name = 'postdetails'),
     path('blogedit/<int:pk>/', views.PostEdits, name = 'postedit'),
     path('deletepost/<int:pk>/', views.deletepost, name = 'deletepost'),
+    path('commentedit/<int:pk>/', views.commentedits, name = 'commentedit'),
+    path('deletecomment/<int:pk>/', views.deletecomment, name = 'deletecomment'),
 ]
