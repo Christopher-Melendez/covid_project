@@ -3,8 +3,6 @@ from django.shortcuts import render
 from tables.models import covid_cases
 from .tables import make_table, model_to_df
 
-# Create your views here.
-
 def tables_view(request, *args, **kewargs):
     #Read Submitted Post Variable From Select Form
     table_choice_in = request.POST.get('table-choice')
