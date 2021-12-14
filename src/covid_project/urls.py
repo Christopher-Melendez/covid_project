@@ -26,6 +26,7 @@ from login.views import log_req_view, login_view, logout_view, signup_view, logi
 #from blog.views import blog_view
 from login.views import log_req_view, login_view, logout_view, signup_view, login_error_view
 from graphs.views import graphs_view
+from contact.views import contact_view
 
 
 urlpatterns = [
@@ -45,7 +46,9 @@ urlpatterns = [
     #path('blog/', BlogHome.as_view(), name="blog"),
     path('', include('betablog.urls')),
     path('', include('login.urls')),
-    path('account/', account_view, name="account")
+    path('account/', account_view, name="account"),
+    path('contact/', contact_view, name="contact")
+
 
     #path('', include('users.urls')),
 

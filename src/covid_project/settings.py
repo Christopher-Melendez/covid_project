@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'betablog',
     'login', 
     'graphs',
+    'contact'
 
 ]
 
