@@ -11,7 +11,6 @@ def maps(map_choice):
     counties = 'heat_map/data/ny_counties.json'    
     
     #Initializing Folium Map Centered in Central New York
-    tooltip = 'Click for More Info'
     m = folium.Map(location=[43.0994, -75.9179], zoom_start=6)
     folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 
